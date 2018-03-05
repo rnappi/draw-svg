@@ -14,12 +14,21 @@ public class DOLSystem {
 	private int derivationSteps;
 	private int currentDerivationStep;
 	private HashMap<String, String> productionRules = new HashMap<String, String>();
+	private int stepSize = 10;
 	
+	public int getStepSize() {
+		return stepSize;
+	}
+
 	private void setAxiom(String axiom) {
 		if(axiom.isEmpty() || axiom == null)
 			throw new RuntimeException ("O termo inicial não pode ser vazio.");
 		
 		this.axiom = axiom;
+	}
+	
+	public int getAngle() {
+		return this.angle;
 	}
 	
 	private void setAngle(String angle) {
