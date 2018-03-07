@@ -18,7 +18,7 @@ public class Polyline {
 	
 	public String toString() {
 		StringBuilder poly = new StringBuilder();
-		poly.append("<polyline points=\"" + getPoints() + "\"");
+		poly.append("<polyline fill=\"none\" stroke=\"black\" stroke-width=\"1\" points=\"" + getPoints() + "\"");
 		poly.append(" />");
 		return poly.toString();
 	}

@@ -1,4 +1,0 @@
-derivationSteps=4
-angle=90
-axiom=-F
-F=F+F-F-F+F

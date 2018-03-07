@@ -1,5 +1,10 @@
 package com.ftt.ec6.dol;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class SVGBuilder {
@@ -38,14 +43,18 @@ public class SVGBuilder {
 		this.initialX = this.initialY = this.finalX = this.finalY = 0;
 	}
 	
-	public void export(String filePath, String fileName) {
+	public void writeFile(String filePath) throws IOException {
+		System.out.println(filePath);
+		
 		StringBuilder svg = new StringBuilder();
 		ArrayList<Polyline> polylines = getPolylines();
 		svg.append(getSvgHeader());
 		polylines.forEach(p -> svg.append(p.toString()));
 		svg.append("</svg>");
 		
-		System.out.println(svg);
+		try (PrintWriter out = new PrintWriter(filePath)) {
+		    out.println(svg);
+		}
 	}
 	
 	private String getSvgHeader() {
@@ -53,7 +62,6 @@ public class SVGBuilder {
 		header.append("<svg xmlns=\"http://www.w3.org/2000/svg\" ");
 		header.append("viewBox=\"" + this.initialX + " " + this.initialY + " " + this.getWidth() + " " + this.getHeight() + "\" ");
 		header.append("preserveAspectRatio=\"xMinYMin meet\" ");
-		header.append("style=\"fill:none;stroke:black;stroke-width:1; transform: rotateX(180deg);\"");
 		header.append(">");
 		return header.toString();
 	}
@@ -121,6 +129,6 @@ public class SVGBuilder {
 	}
 	
 	private int getNextY() {
-		return this.currentY + (this.stepSize * (int)Math.sin(currentAngle));
+		return this.currentY - (this.stepSize * (int)Math.sin(currentAngle));
 	}
 }

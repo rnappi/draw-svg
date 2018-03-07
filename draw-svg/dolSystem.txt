@@ -1,0 +1,5 @@
+derivationSteps=2
+angle=90
+axiom=F-F-F-F
+F=F+f-FF+F+FF+Ff+FF-f+FF-F-FF-Ff-FFF
+f=ffffff

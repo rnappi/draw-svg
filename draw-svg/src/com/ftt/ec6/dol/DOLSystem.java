@@ -64,7 +64,7 @@ public class DOLSystem {
 		});
 	}
 	
-	public String render() {
+	public String toString() {
 		//https://stackoverflow.com/questions/7661460/replace-multiple-substrings-at-once
 		String input = this.axiom;
 		String regex = this.getRegex();
